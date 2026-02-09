@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EGBOOT — Download</title>
+  <meta name="description" content="EGBOOT — تطبيق لإدارة الرسائل والطلبات والمدفوعات ومساعد ذكي للأعمال." />
+
+  <style>
+    :root{
+      /* 2026 Premium Palette */
+      --bg:#070A12;
+      --card:#0D1220;
+      --muted:#9AA4B2;
+      --text:#EAF0FF;
+
+      --p1:#6D28D9;   /* purple */
+      --p2:#22D3EE;   /* cyan */
+      --p3:#22C55E;   /* green */
+      --p4:#FF4D8D;   /* pink */
+
+      --stroke: rgba(255,255,255,.12);
+      --shadow: 0 30px 70px rgba(0,0,0,.45);
+      --shadow2: 0 18px 40px rgba(0,0,0,.35);
+      --r: 20px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(109,40,217,.45), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(34,211,238,.35), transparent 55%),
+        radial-gradient(1000px 700px at 50% 120%, rgba(255,77,141,.20), transparent 60%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px 18px 60px}
+
+    /* Top */
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 0 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    /* Placeholder logo box — استبدله بلوجو الحقيقي */
+    .logoBox{
+      width:44px;height:44px;
+      border-radius:14px;
+      background: linear-gradient(135deg, rgba(109,40,217,.9), rgba(34,211,238,.85));
+      box-shadow: var(--shadow2);
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .brandText{line-height:1}
+    .brandText .name{
+      font-weight:900;
+      letter-spacing:.5px;
+      font-size:18px;
+    }
+    .brandText .tag{
+      margin-top:6px;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .pill{
+      display:flex;align-items:center;gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(10px);
+    }
+
+    .dot{
+      width:10px;height:10px;border-radius:999px;
+      background: var(--p3);
+      box-shadow:0 0 18px rgba(34,197,94,.65);
+    }
+    .pill span{font-size:12px;color:var(--muted)}
+
+    /* Hero */
+    .hero{
+      margin-top:26px;
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .card{
+      border:1px solid var(--stroke);
+      background: rgba(13,18,32,.72);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .heroLeft{
+      padding:28px 22px;
+      min-height:420px;
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      font-size:12px;
+      color:var(--muted);
+    }
+    .spark{
+      width:10px;height:10px;border-radius:999px;
+      background: linear-gradient(135deg,var(--p2),var(--p1));
+      box-shadow:0 0 18px rgba(34,211,238,.55);
+    }
+
+    h1{
+      margin:14px 0 10px;
+      font-size:42px;
+      line-height:1.05;
+      letter-spacing:-.8px;
+    }
+    .gradText{
+      background: linear-gradient(90deg, var(--p2), var(--p1), var(--p4));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .desc{
+      margin:0;
+      color: rgba(234,240,255,.78);
+      font-size:15px;
+      line-height:1.7;
+      max-width: 560px;
+    }
+
+    .ctaRow{
+      margin-top:18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 16px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      font-weight:800;
+      box-shadow: 0 10px 22px rgba(0,0,0,.25);
+      transition: transform .15s ease, filter .15s ease;
+      min-width:170px;
+    }
+    .btn:hover{transform: translateY(-1px); filter:brightness(1.05)}
+    .btnPrimary{
+      background: linear-gradient(135deg, var(--p1), var(--p2));
+      border-color: rgba(255,255,255,.20);
+    }
+    .btnWhats{
+      background: linear-gradient(135deg, #25D366, #10B981);
+      border-color: rgba(255,255,255,.20);
+    }
+    .btnFace{
+      background: linear-gradient(135deg, #1877F2, #60A5FA);
+      border-color: rgba(255,255,255,.20);
+    }
+
+    .mini{
+      margin-top:14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .chip{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+    }
+
+    /* Right phone mock */
+    .heroRight{
+      padding:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:420px;
+      position:relative;
+    }
+
+    .phoneWrap{
+      width:min(360px, 100%);
+      aspect-ratio: 9 / 18;
+      border-radius: 34px;
+      border:1px solid rgba(255,255,255,.16);
+      background:
+        radial-gradient(400px 260px at 30% 10%, rgba(34,211,238,.22), transparent 60%),
+        radial-gradient(500px 380px at 80% 30%, rgba(109,40,217,.25), transparent 60%),
+        rgba(255,255,255,.04);
+      box-shadow: var(--shadow);
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .phoneNotch{
+      width:42%;
+      height:22px;
+      background: rgba(0,0,0,.40);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 0 0 14px 14px;
+      margin:0 auto 12px;
+    }
+
+    .appShot{
+      width:100%;
+      height: calc(100% - 34px);
+      border-radius: 24px;
+      object-fit: cover;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+    }
+
+    /* Features */
+    .features{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+
+    .fCard{
+      padding:16px 14px;
+      border-radius: 18px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 10px 20px rgba(0,0,0,.22);
+      text-align:right;
+    }
+    .fIcon{
+      width:42px;height:42px;border-radius:14px;
+      display:flex;align-items:center;justify-content:center;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      margin-bottom:10px;
+    }
+    .fTitle{font-weight:900;margin:0 0 6px;font-size:14px}
+    .fDesc{margin:0;color:var(--muted);font-size:12.5px;line-height:1.6}
+
+    /* Footer */
+    .footer{
+      margin-top:22px;
+      border:1px solid var(--stroke);
+      background: rgba(13,18,32,.62);
+      border-radius: 18px;
+      padding:16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .footBrand{
+      display:flex;gap:10px;align-items:center;
+      color: rgba(234,240,255,.85);
+      font-weight:800;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr; }
+      .heroLeft,.heroRight{min-height:auto}
+      .features{grid-template-columns:1fr; }
+      h1{font-size:36px}
+      .btn{min-width: 100%}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <!-- Top bar -->
+    <div class="top">
+      <div class="brand">
+        <!-- ✅ حط لوجو EGBOOT الحقيقي بدل الديف ده -->
+        <div class="logoBox" aria-label="EGBOOT logo"></div>
+        <div class="brandText">
+          <div class="name">EGBOOT</div>
+          <div class="tag">AI Business Assistant</div>
+        </div>
+      </div>
+
+      <div class="pill">
+        <div class="dot"></div>
+        <span>Available on Android</span>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="card heroLeft">
+        <div class="kicker">
+          <div class="spark"></div>
+          منصة واحدة لإدارة الشغل + مساعد ذكي
+        </div>
+
+        <h1>
+          <span class="gradText">EGBOOT</span>
+          <br />
+          خلي شغلك أسرع وأذكى
+        </h1>
+
+        <p class="desc">
+          إدارة الرسائل والطلبات والمدفوعات من مكان واحد — مع تجربة استخدام حديثة وعملية.
+          اضغط تحميل علشان تبدأ، أو تواصل معنا على واتساب وفيسبوك.
+        </p>
+
+        <div class="ctaRow">
+          <!-- ✅ حط لينك Google Play الحقيقي -->
+          <a class="btn btnPrimary" href="#" target="_blank" rel="noopener">
+            ⬇️ Download App
+          </a>
+
+          <!-- ✅ حط رقم الواتساب بصيغة دولية -->
+          <a class="btn btnWhats" href="#" target="_blank" rel="noopener">
+            WhatsApp
+          </a>
+
+          <!-- ✅ حط لينك صفحة فيسبوك -->
+          <a class="btn btnFace" href="#" target="_blank" rel="noopener">
+            Facebook
+          </a>
+        </div>
+
+        <div class="mini">
+          <div class="chip">✅ Fast Setup</div>
+          <div class="chip">✅ Secure</div>
+          <div class="chip">✅ Modern UI</div>
+        </div>
+
+        <div class="features">
+          <div class="fCard">
+            <div class="fIcon">💬</div>
+            <p class="fTitle">Messages</p>
+            <p class="fDesc">استقبل إشعارات الإدارة وابعت دعم في ثواني.</p>
+          </div>
+
+          <div class="fCard">
+            <div class="fIcon">🧾</div>
+            <p class="fTitle">Orders</p>
+            <p class="fDesc">تابع الطلبات بسهولة وبواجهة مرتبة.</p>
+          </div>
+
+          <div class="fCard">
+            <div class="fIcon">💳</div>
+            <p class="fTitle">Payments</p>
+            <p class="fDesc">مدفوعات جاهزة وربط تفعيل الأقسام حسب الاشتراك.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card heroRight">
+        <div class="phoneWrap">
+          <div class="phoneNotch"></div>
+          <!-- ✅ حط سكرين شوت حقيقي للتطبيق باسم app.png داخل نفس فولدر الموقع -->
+          <img class="appShot" src="app.png" alt="EGBOOT App Screenshot" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footBrand">
+        <span>EGBOOT</span>
+        <span style="color:rgba(234,240,255,.55);font-weight:700;">— EGBOT AI Assistant</span>
+      </div>
+      <div>© 2026 EGBOOT. All rights reserved.</div>
+    </div>
+
+  </div>
+</body>
+</html>
