@@ -1,306 +1,374 @@
+<!-- index.html -->
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>EGBOOT — Download</title>
-  <meta name="description" content="EGBOOT — تطبيق لإدارة الرسائل والطلبات والمدفوعات ومساعد ذكي للأعمال." />
+  <meta name="theme-color" content="#0B1220" />
+  <title>EGBOOT — Download App</title>
 
   <style>
     :root{
-      /* 2026 Premium Palette */
-      --bg:#070A12;
-      --card:#0D1220;
-      --muted:#9AA4B2;
+      /* 2026 modern palette */
+      --bg0:#070A12;
+      --bg1:#0B1220;
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.08);
+      --stroke:rgba(255,255,255,.10);
       --text:#EAF0FF;
+      --muted:#B6C0DA;
+      --accent1:#00E5FF;
+      --accent2:#7C3AED;
+      --accent3:#22C55E;
+      --accent4:#FF4FD8;
 
-      --p1:#6D28D9;   /* purple */
-      --p2:#22D3EE;   /* cyan */
-      --p3:#22C55E;   /* green */
-      --p4:#FF4D8D;   /* pink */
-
-      --stroke: rgba(255,255,255,.12);
-      --shadow: 0 30px 70px rgba(0,0,0,.45);
-      --shadow2: 0 18px 40px rgba(0,0,0,.35);
-      --r: 20px;
+      --r:24px;
+      --shadow: 0 22px 60px rgba(0,0,0,.55);
+      --shadow2: 0 10px 30px rgba(0,0,0,.45);
     }
 
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Noto Sans", sans-serif;
       color:var(--text);
       background:
-        radial-gradient(1200px 700px at 20% -10%, rgba(109,40,217,.45), transparent 60%),
-        radial-gradient(900px 600px at 90% 10%, rgba(34,211,238,.35), transparent 55%),
-        radial-gradient(1000px 700px at 50% 120%, rgba(255,77,141,.20), transparent 60%),
-        var(--bg);
+        radial-gradient(1000px 800px at 20% 10%, rgba(0,229,255,.16), transparent 60%),
+        radial-gradient(900px 700px at 80% 20%, rgba(124,58,237,.18), transparent 55%),
+        radial-gradient(900px 700px at 50% 95%, rgba(255,79,216,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
       overflow-x:hidden;
     }
 
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:1100px;margin:0 auto;padding:24px 18px 60px}
+    .wrap{
+      width:min(1120px, 92vw);
+      margin:0 auto;
+      padding:26px 0 32px;
+    }
 
-    /* Top */
-    .top{
+    /* Top bar */
+    .topbar{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:14px;
-      padding:14px 0 0;
+      padding:14px 16px;
+      border:1px solid var(--stroke);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border-radius:18px;
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(10px);
     }
-
     .brand{
       display:flex;
       align-items:center;
       gap:12px;
+      min-width: 220px;
     }
-
-    /* Placeholder logo box — استبدله بلوجو الحقيقي */
     .logoBox{
-      width:44px;height:44px;
+      width:42px;height:42px;
       border-radius:14px;
-      background: linear-gradient(135deg, rgba(109,40,217,.9), rgba(34,211,238,.85));
-      box-shadow: var(--shadow2);
-      border:1px solid rgba(255,255,255,.18);
+      background:
+        radial-gradient(18px 18px at 30% 25%, rgba(0,229,255,.55), transparent 60%),
+        radial-gradient(20px 20px at 70% 70%, rgba(255,79,216,.45), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
     }
-
-    .brandText{line-height:1}
+    .brandText{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+    }
     .brandText .name{
       font-weight:900;
-      letter-spacing:.5px;
+      letter-spacing:.6px;
       font-size:18px;
     }
     .brandText .tag{
-      margin-top:6px;
       color:var(--muted);
       font-size:12px;
+      margin-top:4px;
     }
 
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
     .pill{
-      display:flex;align-items:center;gap:10px;
-      padding:10px 14px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
       border-radius:999px;
       border:1px solid var(--stroke);
-      background: rgba(255,255,255,.04);
-      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.05);
+      transition:.18s ease;
+      user-select:none;
+      cursor:pointer;
+    }
+    .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.08)}
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:linear-gradient(180deg, var(--accent1), var(--accent2));
+      box-shadow: 0 0 18px rgba(0,229,255,.35);
     }
 
-    .dot{
-      width:10px;height:10px;border-radius:999px;
-      background: var(--p3);
-      box-shadow:0 0 18px rgba(34,197,94,.65);
+    .ctaRow{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 220px;
+      justify-content:flex-end;
     }
-    .pill span{font-size:12px;color:var(--muted)}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:800;
+      cursor:pointer;
+      transition:.18s ease;
+      box-shadow: 0 10px 24px rgba(0,0,0,.28);
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.10)}
+    .btnPrimary{
+      border:1px solid rgba(0,229,255,.25);
+      background:
+        radial-gradient(120px 60px at 20% 30%, rgba(0,229,255,.35), transparent 65%),
+        radial-gradient(120px 60px at 80% 70%, rgba(124,58,237,.30), transparent 65%),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+    }
+    .btnWhats{
+      border:1px solid rgba(34,197,94,.28);
+      background:
+        radial-gradient(120px 60px at 35% 30%, rgba(34,197,94,.25), transparent 70%),
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+    }
 
     /* Hero */
     .hero{
-      margin-top:26px;
       display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:18px;
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+      margin-top:18px;
       align-items:stretch;
     }
 
-    .card{
+    .panel{
       border:1px solid var(--stroke);
-      background: rgba(13,18,32,.72);
       border-radius: var(--r);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
       box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
       overflow:hidden;
       position:relative;
     }
 
-    .heroLeft{
-      padding:28px 22px;
-      min-height:420px;
+    .left{
+      padding:22px 20px 18px;
+      min-height: 520px;
     }
 
     .kicker{
       display:inline-flex;
       align-items:center;
       gap:10px;
-      padding:8px 12px;
+      padding:10px 12px;
       border-radius:999px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.04);
-      font-size:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
       color:var(--muted);
+      font-weight:700;
+      width: fit-content;
     }
-    .spark{
-      width:10px;height:10px;border-radius:999px;
-      background: linear-gradient(135deg,var(--p2),var(--p1));
-      box-shadow:0 0 18px rgba(34,211,238,.55);
+    .kicker .spark{
+      width:14px;height:14px;border-radius:5px;
+      background: linear-gradient(180deg, var(--accent4), var(--accent2));
+      box-shadow: 0 0 18px rgba(255,79,216,.30);
     }
 
     h1{
-      margin:14px 0 10px;
-      font-size:42px;
-      line-height:1.05;
-      letter-spacing:-.8px;
+      margin:16px 0 10px;
+      font-size: clamp(28px, 3.8vw, 44px);
+      line-height:1.06;
+      letter-spacing:.3px;
     }
-    .gradText{
-      background: linear-gradient(90deg, var(--p2), var(--p1), var(--p4));
+    .grad{
+      background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent4));
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
     }
-
-    .desc{
-      margin:0;
-      color: rgba(234,240,255,.78);
-      font-size:15px;
+    .sub{
+      margin:10px 0 18px;
+      color: var(--muted);
+      font-size: 15px;
       line-height:1.7;
-      max-width: 560px;
+      max-width: 52ch;
     }
 
-    .ctaRow{
-      margin-top:18px;
-      display:flex;
-      flex-wrap:wrap;
+    .features{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
       gap:12px;
-      align-items:center;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:14px 16px;
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      font-weight:800;
-      box-shadow: 0 10px 22px rgba(0,0,0,.25);
-      transition: transform .15s ease, filter .15s ease;
-      min-width:170px;
-    }
-    .btn:hover{transform: translateY(-1px); filter:brightness(1.05)}
-    .btnPrimary{
-      background: linear-gradient(135deg, var(--p1), var(--p2));
-      border-color: rgba(255,255,255,.20);
-    }
-    .btnWhats{
-      background: linear-gradient(135deg, #25D366, #10B981);
-      border-color: rgba(255,255,255,.20);
-    }
-    .btnFace{
-      background: linear-gradient(135deg, #1877F2, #60A5FA);
-      border-color: rgba(255,255,255,.20);
-    }
-
-    .mini{
       margin-top:14px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      color:var(--muted);
-      font-size:12px;
     }
-    .chip{
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.04);
+    .feature{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: 18px;
+      padding:12px 12px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      min-height: 76px;
+    }
+    .ic{
+      width:40px;height:40px;border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(18px 18px at 30% 25%, rgba(0,229,255,.25), transparent 60%),
+        radial-gradient(18px 18px at 70% 75%, rgba(124,58,237,.22), transparent 60%),
+        rgba(255,255,255,.04);
+      display:flex;align-items:center;justify-content:center;
+      font-weight:900;
+      color: var(--text);
+    }
+    .feature b{display:block;font-size:13px}
+    .feature span{display:block;color:var(--muted);font-size:12px;margin-top:3px;line-height:1.4}
+
+    .ctaGrid{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+      align-items:center;
+    }
+    .small{
+      font-size:12px;
+      color: var(--muted);
+      margin-top:12px;
     }
 
-    /* Right phone mock */
-    .heroRight{
-      padding:18px;
+    /* Phone */
+    .right{
       display:flex;
       align-items:center;
       justify-content:center;
-      min-height:420px;
-      position:relative;
+      padding:16px;
+      min-height: 520px;
     }
 
     .phoneWrap{
-      width:min(360px, 100%);
-      aspect-ratio: 9 / 18;
-      border-radius: 34px;
-      border:1px solid rgba(255,255,255,.16);
+      width:min(360px, 86vw);
+      aspect-ratio: 9/19.5;
+      border-radius: 42px;
       background:
-        radial-gradient(400px 260px at 30% 10%, rgba(34,211,238,.22), transparent 60%),
-        radial-gradient(500px 380px at 80% 30%, rgba(109,40,217,.25), transparent 60%),
-        rgba(255,255,255,.04);
-      box-shadow: var(--shadow);
-      padding:14px;
+        linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 26px 70px rgba(0,0,0,.55);
       position:relative;
+      padding: 14px;
+    }
+
+    .phoneBezel{
+      position:absolute;
+      inset:14px;
+      border-radius: 34px;
+      background: rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.10);
       overflow:hidden;
     }
 
-    .phoneNotch{
-      width:42%;
-      height:22px;
-      background: rgba(0,0,0,.40);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius: 0 0 14px 14px;
-      margin:0 auto 12px;
+    /* notch */
+    .notch{
+      position:absolute;
+      top:10px;
+      left:50%;
+      transform:translateX(-50%);
+      width: 140px;
+      height: 26px;
+      border-radius: 0 0 18px 18px;
+      background: rgba(0,0,0,.55);
+      border: 1px solid rgba(255,255,255,.10);
+      z-index:3;
     }
 
-    .appShot{
+    .screen{
+      position:absolute;
+      inset:0;
       width:100%;
-      height: calc(100% - 34px);
-      border-radius: 24px;
+      height:100%;
       object-fit: cover;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.06);
+      transform: scale(1.02);
+      filter: saturate(1.03) contrast(1.02);
     }
 
-    /* Features */
-    .features{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
+    .screenOverlay{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(300px 240px at 20% 10%, rgba(0,229,255,.12), transparent 60%),
+        radial-gradient(260px 220px at 80% 30%, rgba(255,79,216,.10), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.05));
+      pointer-events:none;
+      z-index:2;
     }
 
-    .fCard{
-      padding:16px 14px;
-      border-radius: 18px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.04);
-      box-shadow: 0 10px 20px rgba(0,0,0,.22);
-      text-align:right;
+    .glare{
+      position:absolute;
+      inset:-40px -30px auto auto;
+      width: 220px;
+      height: 320px;
+      transform: rotate(18deg);
+      background: linear-gradient(180deg, rgba(255,255,255,.20), transparent 60%);
+      filter: blur(1px);
+      opacity:.22;
+      z-index:4;
+      pointer-events:none;
+      border-radius: 40px;
     }
-    .fIcon{
-      width:42px;height:42px;border-radius:14px;
-      display:flex;align-items:center;justify-content:center;
-      background: rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.12);
-      margin-bottom:10px;
-    }
-    .fTitle{font-weight:900;margin:0 0 6px;font-size:14px}
-    .fDesc{margin:0;color:var(--muted);font-size:12.5px;line-height:1.6}
 
     /* Footer */
     .footer{
-      margin-top:22px;
+      margin-top:16px;
+      padding:14px 16px;
       border:1px solid var(--stroke);
-      background: rgba(13,18,32,.62);
       border-radius: 18px;
-      padding:16px;
+      background: rgba(255,255,255,.04);
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:12px;
-      color:var(--muted);
-      font-size:12px;
+      gap:10px;
+      flex-wrap:wrap;
     }
-    .footBrand{
-      display:flex;gap:10px;align-items:center;
-      color: rgba(234,240,255,.85);
-      font-weight:800;
+    .footer small{color:var(--muted)}
+    .footLinks{display:flex;gap:10px;flex-wrap:wrap}
+    .link{
+      padding:10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
     }
 
     /* Responsive */
     @media (max-width: 920px){
-      .hero{grid-template-columns:1fr; }
-      .heroLeft,.heroRight{min-height:auto}
-      .features{grid-template-columns:1fr; }
-      h1{font-size:36px}
-      .btn{min-width: 100%}
+      .hero{grid-template-columns: 1fr; }
+      .left,.right{min-height:auto}
+      .ctaRow{min-width:auto}
+      .brand{min-width:auto}
     }
   </style>
 </head>
@@ -308,104 +376,125 @@
 <body>
   <div class="wrap">
 
-    <!-- Top bar -->
-    <div class="top">
+    <!-- TOP BAR -->
+    <header class="topbar">
       <div class="brand">
-        <!-- ✅ حط لوجو EGBOOT الحقيقي بدل الديف ده -->
-        <div class="logoBox" aria-label="EGBOOT logo"></div>
+        <div class="logoBox" aria-hidden="true"></div>
         <div class="brandText">
           <div class="name">EGBOOT</div>
-          <div class="tag">AI Business Assistant</div>
+          <div class="tag">لوحة تحميل التطبيق + روابط التواصل</div>
         </div>
       </div>
 
-      <div class="pill">
-        <div class="dot"></div>
-        <span>Available on Android</span>
-      </div>
-    </div>
+      <nav class="nav">
+        <a class="pill" href="#download"><span class="dot"></span>تحميل التطبيق</a>
+        <a class="pill" href="#features"><span class="dot"></span>المميزات</a>
+        <a class="pill" href="#contact"><span class="dot"></span>تواصل</a>
+      </nav>
 
-    <!-- Hero -->
-    <div class="hero">
-      <div class="card heroLeft">
-        <div class="kicker">
-          <div class="spark"></div>
-          منصة واحدة لإدارة الشغل + مساعد ذكي
-        </div>
+      <div class="ctaRow">
+        <!-- WhatsApp: غيّر الرقم -->
+        <a class="btn btnWhats" href="https://wa.me/201000000000" target="_blank" rel="noopener">واتساب</a>
+
+        <!-- Play Store: حط لينك التطبيق -->
+        <a class="btn btnPrimary" id="download" href="https://play.google.com/store/apps/details?id=com.example.egboot2" target="_blank" rel="noopener">
+          تحميل من Google Play
+        </a>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <main class="hero">
+      <!-- LEFT PANEL -->
+      <section class="panel left">
+        <div class="kicker"><span class="spark"></span> صفحة واحدة — بسيطة وسريعة</div>
 
         <h1>
-          <span class="gradText">EGBOOT</span>
-          <br />
-          خلي شغلك أسرع وأذكى
+          حمّل تطبيق <span class="grad">EGBOOT</span><br/>
+          وابدأ شغلك بشكل أذكى
         </h1>
 
-        <p class="desc">
-          إدارة الرسائل والطلبات والمدفوعات من مكان واحد — مع تجربة استخدام حديثة وعملية.
-          اضغط تحميل علشان تبدأ، أو تواصل معنا على واتساب وفيسبوك.
+        <p class="sub">
+          صفحة Landing احترافية تساعد العميل يوصل للتطبيق بسرعة، مع روابط تواصل واضحة.
+          التصميم بألوان حديثة (2026 vibe) ومتوافق للموبايل 100%.
         </p>
 
-        <div class="ctaRow">
-          <!-- ✅ حط لينك Google Play الحقيقي -->
-          <a class="btn btnPrimary" href="#" target="_blank" rel="noopener">
-            ⬇️ Download App
+        <div class="ctaGrid">
+          <a class="btn btnPrimary" href="https://play.google.com/store/apps/details?id=com.example.egboot2" target="_blank" rel="noopener">
+            تحميل التطبيق
           </a>
-
-          <!-- ✅ حط رقم الواتساب بصيغة دولية -->
-          <a class="btn btnWhats" href="#" target="_blank" rel="noopener">
-            WhatsApp
-          </a>
-
-          <!-- ✅ حط لينك صفحة فيسبوك -->
-          <a class="btn btnFace" href="#" target="_blank" rel="noopener">
-            Facebook
-          </a>
+          <a class="btn" href="https://facebook.com/" target="_blank" rel="noopener">فيسبوك</a>
+          <a class="btn btnWhats" href="https://wa.me/201000000000" target="_blank" rel="noopener">واتساب</a>
         </div>
 
-        <div class="mini">
-          <div class="chip">✅ Fast Setup</div>
-          <div class="chip">✅ Secure</div>
-          <div class="chip">✅ Modern UI</div>
-        </div>
-
-        <div class="features">
-          <div class="fCard">
-            <div class="fIcon">💬</div>
-            <p class="fTitle">Messages</p>
-            <p class="fDesc">استقبل إشعارات الإدارة وابعت دعم في ثواني.</p>
+        <div id="features" class="features">
+          <div class="feature">
+            <div class="ic">⚡</div>
+            <div>
+              <b>سريع وخفيف</b>
+              <span>تحميل فوري + تجربة نظيفة.</span>
+            </div>
           </div>
-
-          <div class="fCard">
-            <div class="fIcon">🧾</div>
-            <p class="fTitle">Orders</p>
-            <p class="fDesc">تابع الطلبات بسهولة وبواجهة مرتبة.</p>
+          <div class="feature">
+            <div class="ic">🔒</div>
+            <div>
+              <b>ثقة وأمان</b>
+              <span>مناسب للـ HTTPS لما DNS يكتمل.</span>
+            </div>
           </div>
-
-          <div class="fCard">
-            <div class="fIcon">💳</div>
-            <p class="fTitle">Payments</p>
-            <p class="fDesc">مدفوعات جاهزة وربط تفعيل الأقسام حسب الاشتراك.</p>
+          <div class="feature">
+            <div class="ic">📱</div>
+            <div>
+              <b>شكل موبايل حقيقي</b>
+              <span>سكرين شوت التطبيق داخل إطار تليفون.</span>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="ic">💬</div>
+            <div>
+              <b>تواصل مباشر</b>
+              <span>زر واتساب + روابط بسرعة.</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="card heroRight">
-        <div class="phoneWrap">
-          <div class="phoneNotch"></div>
-          <!-- ✅ حط سكرين شوت حقيقي للتطبيق باسم app.png داخل نفس فولدر الموقع -->
-          <img class="appShot" src="app.png" alt="EGBOOT App Screenshot" />
+        <div class="small" id="contact">
+          لو عايز نضيف زرار (اتصال / تيليجرام / ايميل) قولّي وبعمله فورًا.
         </div>
-      </div>
-    </div>
+      </section>
 
-    <!-- Footer -->
-    <div class="footer">
-      <div class="footBrand">
-        <span>EGBOOT</span>
-        <span style="color:rgba(234,240,255,.55);font-weight:700;">— EGBOT AI Assistant</span>
-      </div>
-      <div>© 2026 EGBOOT. All rights reserved.</div>
-    </div>
+      <!-- RIGHT PANEL: PHONE -->
+      <section class="panel right">
+        <div class="phoneWrap" aria-label="App preview phone mockup">
+          <div class="notch" aria-hidden="true"></div>
 
+          <div class="phoneBezel">
+            <!-- ✅ هنا الصورة بتاعتك جوة شاشة الموبايل -->
+            <!-- لازم تحط الصورة جنب index.html باسم app-screenshot.jpg -->
+            <img class="screen" src="app-screenshot.jpg" alt="EGBOOT App Screenshot" />
+
+            <div class="screenOverlay" aria-hidden="true"></div>
+          </div>
+
+          <div class="glare" aria-hidden="true"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <small>© <span id="y"></span> EGBOOT • صفحة تحميل التطبيق</small>
+
+      <div class="footLinks">
+        <a class="link" href="https://play.google.com/store/apps/details?id=com.example.egboot2" target="_blank" rel="noopener">Google Play</a>
+        <a class="link" href="https://wa.me/201000000000" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="link" href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </footer>
   </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
