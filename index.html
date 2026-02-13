@@ -1,438 +1,254 @@
-<!-- index.html -->
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0B1220" />
-  <title>EGBOOT — Download App</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>AI Agent Assistant</title>
 
-  <style>
-    :root{
-      --bg0:#070A12;
-      --bg1:#0B1220;
-      --card:rgba(255,255,255,.06);
-      --stroke:rgba(255,255,255,.10);
-      --text:#EAF0FF;
-      --muted:#B6C0DA;
-      --accent1:#00E5FF;
-      --accent2:#7C3AED;
-      --accent4:#FF4FD8;
+<style>
+:root{
+--bg:#0B1220;
+--card:#111827;
+--accent:#00E5FF;
+--accent2:#7C3AED;
+--text:#EAF0FF;
+--muted:#9CA3AF;
+}
 
-      --r:24px;
-      --shadow: 0 22px 60px rgba(0,0,0,.55);
-      --shadow2: 0 10px 30px rgba(0,0,0,.45);
-    }
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:system-ui;
+background:linear-gradient(180deg,#070A12,#0B1220);
+color:var(--text);
+}
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Noto Sans", sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1000px 800px at 20% 10%, rgba(0,229,255,.16), transparent 60%),
-        radial-gradient(900px 700px at 80% 20%, rgba(124,58,237,.18), transparent 55%),
-        radial-gradient(900px 700px at 50% 95%, rgba(255,79,216,.10), transparent 60%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      overflow-x:hidden;
-    }
+.wrap{
+width:min(1100px,92vw);
+margin:auto;
+padding:20px 0;
+}
 
-    a{color:inherit;text-decoration:none}
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:10px;
+}
 
-    .wrap{
-      width:min(1120px, 92vw);
-      margin:0 auto;
-      padding:18px 0 28px;
-    }
+.logo{
+font-weight:900;
+font-size:20px;
+}
 
-    /* Top bar */
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      padding:14px 16px;
-      border:1px solid var(--stroke);
-      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      border-radius:18px;
-      box-shadow: var(--shadow2);
-      backdrop-filter: blur(10px);
-      flex-wrap:wrap;
-    }
+.btn{
+padding:12px 18px;
+border-radius:12px;
+text-decoration:none;
+font-weight:700;
+display:inline-block;
+}
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width: 200px;
-    }
-    .logoBox{
-      width:42px;height:42px;
-      border-radius:14px;
-      background:
-        radial-gradient(18px 18px at 30% 25%, rgba(0,229,255,.55), transparent 60%),
-        radial-gradient(20px 20px at 70% 70%, rgba(255,79,216,.45), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      flex:0 0 auto;
-    }
-    .brandText{display:flex;flex-direction:column;line-height:1.05}
-    .brandText .name{font-weight:900;letter-spacing:.6px;font-size:18px}
+.primary{
+background:linear-gradient(90deg,var(--accent),var(--accent2));
+color:white;
+}
 
-    .nav{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:center;
-      flex:1 1 auto;
-    }
+.secondary{
+border:1px solid #444;
+color:white;
+}
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.05);
-      transition:.18s ease;
-      user-select:none;
-      cursor:pointer;
-      white-space:nowrap;
-    }
-    .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.08)}
-    .dot{
-      width:10px;height:10px;border-radius:50%;
-      background:linear-gradient(180deg, var(--accent1), var(--accent2));
-      box-shadow: 0 0 18px rgba(0,229,255,.35);
-      flex:0 0 auto;
-    }
+.hero{
+text-align:center;
+padding:60px 0 40px;
+}
 
-    .ctaRow{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      justify-content:flex-end;
-      flex:0 0 auto;
-    }
+.hero h1{
+font-size:clamp(28px,4vw,42px);
+margin-bottom:15px;
+}
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color:var(--text);
-      font-weight:800;
-      cursor:pointer;
-      transition:.18s ease;
-      box-shadow: 0 10px 24px rgba(0,0,0,.28);
-      white-space:nowrap;
-    }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.10)}
-    .btnPrimary{
-      border:1px solid rgba(0,229,255,.25);
-      background:
-        radial-gradient(120px 60px at 20% 30%, rgba(0,229,255,.35), transparent 65%),
-        radial-gradient(120px 60px at 80% 70%, rgba(124,58,237,.30), transparent 65%),
-        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
-    }
+.hero p{
+color:var(--muted);
+max-width:600px;
+margin:auto;
+line-height:1.7;
+}
 
-    /* Hero */
-    .hero{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:18px;
-      margin-top:16px;
-      align-items:stretch;
-    }
+.buttons{
+margin-top:25px;
+display:flex;
+gap:12px;
+justify-content:center;
+flex-wrap:wrap;
+}
 
-    .panel{
-      border:1px solid var(--stroke);
-      border-radius: var(--r);
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-      overflow:hidden;
-      position:relative;
-    }
+.badge{
+margin-top:15px;
+color:#22C55E;
+font-weight:700;
+}
 
-    .left{
-      padding:22px 20px;
-      min-height: 520px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      gap:14px;
-    }
+.section{
+padding:60px 0;
+}
 
-    h1{
-      margin:0;
-      font-size: clamp(28px, 4vw, 44px);
-      line-height:1.08;
-      letter-spacing:.3px;
-    }
-    .grad{
-      background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent4));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
+.section h2{
+text-align:center;
+margin-bottom:30px;
+}
 
-    .ctaGrid{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      margin-top:6px;
-    }
+.phone{
+width:320px;
+margin:auto;
+border-radius:30px;
+overflow:hidden;
+box-shadow:0 20px 50px rgba(0,0,0,.5);
+}
 
-    /* Phone */
-    .right{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:16px;
-      min-height: 520px;
-    }
+.phone img{
+width:100%;
+display:block;
+}
 
-    .phoneWrap{
-      width:min(360px, 86vw);
-      aspect-ratio: 9/19.5;
-      border-radius: 42px;
-      background: linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.04));
-      border: 1px solid rgba(255,255,255,.18);
-      box-shadow: 0 26px 70px rgba(0,0,0,.55);
-      position:relative;
-      padding: 14px;
-    }
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:30px;
+}
 
-    .phoneBezel{
-      position:absolute;
-      inset:14px;
-      border-radius: 34px;
-      background: rgba(0,0,0,.35);
-      border: 1px solid rgba(255,255,255,.10);
-      overflow:hidden;
-    }
+.card{
+background:var(--card);
+padding:20px;
+border-radius:18px;
+}
 
-    .notch{
-      position:absolute;
-      top:10px;
-      left:50%;
-      transform:translateX(-50%);
-      width: 140px;
-      height: 26px;
-      border-radius: 0 0 18px 18px;
-      background: rgba(0,0,0,.55);
-      border: 1px solid rgba(255,255,255,.10);
-      z-index:3;
-    }
+.price-box{
+background:var(--card);
+padding:30px;
+border-radius:20px;
+text-align:center;
+max-width:400px;
+margin:auto;
+}
 
-    .screen{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit: cover;
-      transform: scale(1.02);
-      filter: saturate(1.03) contrast(1.02);
-    }
+.price{
+font-size:32px;
+font-weight:900;
+margin:15px 0;
+color:#22C55E;
+}
 
-    /* لو الصورة مش موجودة: نعرض Placeholder بدل الفراغ */
-    .placeholder{
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex-direction:column;
-      gap:8px;
-      background:
-        radial-gradient(300px 240px at 20% 10%, rgba(0,229,255,.10), transparent 60%),
-        radial-gradient(260px 220px at 80% 30%, rgba(255,79,216,.08), transparent 60%),
-        linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.15));
-      z-index:1;
-      padding:20px;
-      text-align:center;
-    }
-    .placeholder .phTitle{
-      font-weight:900;
-      letter-spacing:.3px;
-      font-size:16px;
-    }
-    .placeholder .phSub{
-      color:var(--muted);
-      font-size:12px;
-      line-height:1.6;
-      max-width: 28ch;
-    }
+.faq{
+max-width:700px;
+margin:auto;
+}
 
-    .screenOverlay{
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(300px 240px at 20% 10%, rgba(0,229,255,.12), transparent 60%),
-        radial-gradient(260px 220px at 80% 30%, rgba(255,79,216,.10), transparent 60%),
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.05));
-      pointer-events:none;
-      z-index:2;
-    }
+.faq-item{
+margin-bottom:15px;
+background:var(--card);
+padding:15px;
+border-radius:12px;
+}
 
-    .glare{
-      position:absolute;
-      inset:-40px -30px auto auto;
-      width: 220px;
-      height: 320px;
-      transform: rotate(18deg);
-      background: linear-gradient(180deg, rgba(255,255,255,.20), transparent 60%);
-      filter: blur(1px);
-      opacity:.22;
-      z-index:4;
-      pointer-events:none;
-      border-radius: 40px;
-    }
-
-    /* Footer */
-    .footer{
-      margin-top:14px;
-      padding:14px 16px;
-      border:1px solid var(--stroke);
-      border-radius: 18px;
-      background: rgba(255,255,255,.04);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .footer small{color:var(--muted)}
-    .footLinks{display:flex;gap:10px;flex-wrap:wrap}
-    .link{
-      padding:10px 12px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-    }
-
-    /* ✅ Mobile fixes */
-    @media (max-width: 920px){
-      .hero{grid-template-columns: 1fr; }
-      .left,.right{min-height:auto}
-      .ctaRow{width:100%; justify-content:stretch}
-      .ctaRow .btn{width:100%}
-      .nav{width:100%}
-      .pill{flex:1 1 auto; justify-content:center}
-    }
-    @media (max-width: 520px){
-      .wrap{padding:14px 0 22px}
-      .topbar{padding:12px}
-      .left{padding:18px 14px}
-      .phoneWrap{width:min(340px, 92vw)}
-      .btn{width:100%}
-      .ctaGrid{flex-direction:column; align-items:stretch}
-      .nav{gap:8px}
-    }
-  </style>
+footer{
+margin-top:60px;
+padding:20px 0;
+text-align:center;
+color:var(--muted);
+}
+iframe{
+width:100%;
+border-radius:20px;
+}
+</style>
 </head>
 
 <body>
-  <div class="wrap">
+<div class="wrap">
 
-    <!-- TOP BAR -->
-    <header class="topbar">
-      <div class="brand">
-        <div class="logoBox" aria-hidden="true"></div>
-        <div class="brandText">
-          <div class="name">EGBOOT</div>
-        </div>
-      </div>
+<header>
+<div class="logo">AI Agent Assistant</div>
+<div>
+<a class="btn primary" href="#">تحميل Google Play</a>
+<a class="btn secondary" href="#">App Store قريبًا</a>
+</div>
+</header>
 
-      <nav class="nav">
-        <a class="pill" href="#download"><span class="dot"></span>تحميل</a>
-        <a class="pill" href="#preview"><span class="dot"></span>معاينة</a>
-        <a class="pill" href="#links"><span class="dot"></span>روابط</a>
-      </nav>
+<section class="hero">
+<h1>مساعد ذكاء اصطناعي يرد على عملائك ويجمع أوردراتك تلقائيًا</h1>
+<p>
+يربط التطبيق حسابات Facebook و WhatsApp و Instagram  
+ويجمع كل المحادثات والأوردرات داخل قسم واحد في التطبيق.
+</p>
+<div class="buttons">
+<a class="btn primary" href="#">تحميل التطبيق</a>
+<a class="btn secondary" href="#">Facebook</a>
+</div>
+<div class="badge">🎁 10 أيام تجربة مجانية</div>
+</section>
 
-      <div class="ctaRow">
-        <!-- Play Store: حط لينك التطبيق -->
-        <a class="btn btnPrimary" id="download" href="https://play.google.com/store/apps/details?id=com.example.egboot2" target="_blank" rel="noopener">
-          تحميل من Google Play
-        </a>
-      </div>
-    </header>
+<section class="section">
+<h2>صورة من داخل التطبيق</h2>
+<div class="phone">
+<img src="app-screenshot.jpg" alt="App Preview">
+</div>
+</section>
 
-    <!-- HERO -->
-    <main class="hero">
-      <!-- LEFT PANEL -->
-      <section class="panel left" id="links">
-        <h1>
-          حمّل تطبيق <span class="grad">EGBOOT</span>
-        </h1>
+<section class="section">
+<h2>شوف التطبيق وهو شغال</h2>
+<iframe height="400" src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+allowfullscreen></iframe>
+</section>
 
-        <div class="ctaGrid">
-          <a class="btn btnPrimary" href="https://play.google.com/store/apps/details?id=com.example.egboot2" target="_blank" rel="noopener">
-            تحميل التطبيق
-          </a>
-          <a class="btn" href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a>
-        </div>
-      </section>
+<section class="section">
+<h2>مميزات الخدمة</h2>
+<div class="features">
+<div class="card">🔹 رد تلقائي ذكي على العملاء</div>
+<div class="card">🔹 ربط فيسبوك + واتساب + إنستجرام</div>
+<div class="card">🔹 تجميع كل الرسائل في Inbox واحد</div>
+<div class="card">🔹 تجميع كل الأوردرات داخل Orders</div>
+<div class="card">🔹 إدارة سهلة من الموبايل</div>
+</div>
+</section>
 
-      <!-- RIGHT PANEL: PHONE -->
-      <section class="panel right" id="preview">
-        <div class="phoneWrap" aria-label="App preview phone mockup">
-          <div class="notch" aria-hidden="true"></div>
+<section class="section">
+<h2>السعر</h2>
+<div class="price-box">
+<div class="price">500 جنيه / شهر</div>
+<div>مع 10 أيام تجربة مجانية بدون مخاطرة</div>
+<br>
+<a class="btn primary" href="#">ابدأ الآن</a>
+</div>
+</section>
 
-          <div class="phoneBezel">
-            <!-- Placeholder يظهر لو الصورة مش موجودة -->
-            <div class="placeholder" id="ph">
-              <div class="phTitle">ضع صورة التطبيق هنا</div>
-              <div class="phSub">سمّي الصورة: <b>app-screenshot.jpg</b> وحطّها جنب ملف index.html</div>
-            </div>
+<section class="section">
+<h2>الأسئلة الشائعة</h2>
+<div class="faq">
+<div class="faq-item">
+<b>هل أحتاج فريق للرد؟</b><br>
+لا، الـ AI Agent يتولى الرد والمتابعة تلقائيًا.
+</div>
+<div class="faq-item">
+<b>هل يعمل مع كل منصات التواصل؟</b><br>
+نعم، يدعم Facebook و WhatsApp و Instagram.
+</div>
+<div class="faq-item">
+<b>كيف أبدأ؟</b><br>
+حمّل التطبيق، اربط حساباتك، وابدأ التجربة المجانية فورًا.
+</div>
+</div>
+</section>
 
-            <!-- ✅ صورة التطبيق داخل الشاشة -->
-            <img class="screen" id="shot" src="app-screenshot.jpg" alt="EGBOOT App Screenshot" />
+<footer>
+© 2026 AI Agent Assistant • جميع الحقوق محفوظة  
+<br><br>
+<a href="#">Facebook</a>
+</footer>
 
-            <div class="screenOverlay" aria-hidden="true"></div>
-          </div>
-
-          <div class="glare" aria-hidden="true"></div>
-        </div>
-      </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <small>© <span id="y"></span> EGBOOT</small>
-
-      <div class="footLinks">
-        <a class="link" href="https://play.google.com/store/apps/details?id=com.example.egboot2" target="_blank" rel="noopener">Google Play</a>
-        <a class="link" href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-
-    // لو الصورة مش لاقيها/فشلت في التحميل: نخلي الـ placeholder ظاهر
-    const img = document.getElementById("shot");
-    const ph = document.getElementById("ph");
-
-    img.addEventListener("load", () => {
-      ph.style.display = "none";
-    });
-
-    img.addEventListener("error", () => {
-      ph.style.display = "flex";
-      img.style.display = "none";
-    });
-  </script>
+</div>
 </body>
 </html>
