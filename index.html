@@ -9,17 +9,14 @@
 
   <style>
     :root{
-      /* 2026 modern palette */
       --bg0:#070A12;
       --bg1:#0B1220;
       --card:rgba(255,255,255,.06);
-      --card2:rgba(255,255,255,.08);
       --stroke:rgba(255,255,255,.10);
       --text:#EAF0FF;
       --muted:#B6C0DA;
       --accent1:#00E5FF;
       --accent2:#7C3AED;
-      --accent3:#22C55E;
       --accent4:#FF4FD8;
 
       --r:24px;
@@ -42,10 +39,11 @@
     }
 
     a{color:inherit;text-decoration:none}
+
     .wrap{
       width:min(1120px, 92vw);
       margin:0 auto;
-      padding:26px 0 32px;
+      padding:18px 0 28px;
     }
 
     /* Top bar */
@@ -60,12 +58,14 @@
       border-radius:18px;
       box-shadow: var(--shadow2);
       backdrop-filter: blur(10px);
+      flex-wrap:wrap;
     }
+
     .brand{
       display:flex;
       align-items:center;
       gap:12px;
-      min-width: 220px;
+      min-width: 200px;
     }
     .logoBox{
       width:42px;height:42px;
@@ -76,22 +76,10 @@
         linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
       border:1px solid rgba(255,255,255,.12);
       box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      flex:0 0 auto;
     }
-    .brandText{
-      display:flex;
-      flex-direction:column;
-      line-height:1.05;
-    }
-    .brandText .name{
-      font-weight:900;
-      letter-spacing:.6px;
-      font-size:18px;
-    }
-    .brandText .tag{
-      color:var(--muted);
-      font-size:12px;
-      margin-top:4px;
-    }
+    .brandText{display:flex;flex-direction:column;line-height:1.05}
+    .brandText .name{font-weight:900;letter-spacing:.6px;font-size:18px}
 
     .nav{
       display:flex;
@@ -99,7 +87,9 @@
       gap:10px;
       flex-wrap:wrap;
       justify-content:center;
+      flex:1 1 auto;
     }
+
     .pill{
       display:inline-flex;
       align-items:center;
@@ -111,21 +101,24 @@
       transition:.18s ease;
       user-select:none;
       cursor:pointer;
+      white-space:nowrap;
     }
     .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.08)}
     .dot{
       width:10px;height:10px;border-radius:50%;
       background:linear-gradient(180deg, var(--accent1), var(--accent2));
       box-shadow: 0 0 18px rgba(0,229,255,.35);
+      flex:0 0 auto;
     }
 
     .ctaRow{
       display:flex;
       align-items:center;
       gap:10px;
-      min-width: 220px;
       justify-content:flex-end;
+      flex:0 0 auto;
     }
+
     .btn{
       display:inline-flex;
       align-items:center;
@@ -150,19 +143,13 @@
         radial-gradient(120px 60px at 80% 70%, rgba(124,58,237,.30), transparent 65%),
         linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
     }
-    .btnWhats{
-      border:1px solid rgba(34,197,94,.28);
-      background:
-        radial-gradient(120px 60px at 35% 30%, rgba(34,197,94,.25), transparent 70%),
-        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-    }
 
     /* Hero */
     .hero{
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:22px;
-      margin-top:18px;
+      grid-template-columns: 1.05fr .95fr;
+      gap:18px;
+      margin-top:16px;
       align-items:stretch;
     }
 
@@ -177,32 +164,18 @@
     }
 
     .left{
-      padding:22px 20px 18px;
+      padding:22px 20px;
       min-height: 520px;
-    }
-
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      color:var(--muted);
-      font-weight:700;
-      width: fit-content;
-    }
-    .kicker .spark{
-      width:14px;height:14px;border-radius:5px;
-      background: linear-gradient(180deg, var(--accent4), var(--accent2));
-      box-shadow: 0 0 18px rgba(255,79,216,.30);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:14px;
     }
 
     h1{
-      margin:16px 0 10px;
-      font-size: clamp(28px, 3.8vw, 44px);
-      line-height:1.06;
+      margin:0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height:1.08;
       letter-spacing:.3px;
     }
     .grad{
@@ -211,55 +184,13 @@
       background-clip:text;
       color:transparent;
     }
-    .sub{
-      margin:10px 0 18px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height:1.7;
-      max-width: 52ch;
-    }
-
-    .features{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap:12px;
-      margin-top:14px;
-    }
-    .feature{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      border-radius: 18px;
-      padding:12px 12px;
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      min-height: 76px;
-    }
-    .ic{
-      width:40px;height:40px;border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background:
-        radial-gradient(18px 18px at 30% 25%, rgba(0,229,255,.25), transparent 60%),
-        radial-gradient(18px 18px at 70% 75%, rgba(124,58,237,.22), transparent 60%),
-        rgba(255,255,255,.04);
-      display:flex;align-items:center;justify-content:center;
-      font-weight:900;
-      color: var(--text);
-    }
-    .feature b{display:block;font-size:13px}
-    .feature span{display:block;color:var(--muted);font-size:12px;margin-top:3px;line-height:1.4}
 
     .ctaGrid{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
-      margin-top:16px;
       align-items:center;
-    }
-    .small{
-      font-size:12px;
-      color: var(--muted);
-      margin-top:12px;
+      margin-top:6px;
     }
 
     /* Phone */
@@ -275,8 +206,7 @@
       width:min(360px, 86vw);
       aspect-ratio: 9/19.5;
       border-radius: 42px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.04));
+      background: linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.04));
       border: 1px solid rgba(255,255,255,.18);
       box-shadow: 0 26px 70px rgba(0,0,0,.55);
       position:relative;
@@ -292,7 +222,6 @@
       overflow:hidden;
     }
 
-    /* notch */
     .notch{
       position:absolute;
       top:10px;
@@ -314,6 +243,35 @@
       object-fit: cover;
       transform: scale(1.02);
       filter: saturate(1.03) contrast(1.02);
+    }
+
+    /* لو الصورة مش موجودة: نعرض Placeholder بدل الفراغ */
+    .placeholder{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:8px;
+      background:
+        radial-gradient(300px 240px at 20% 10%, rgba(0,229,255,.10), transparent 60%),
+        radial-gradient(260px 220px at 80% 30%, rgba(255,79,216,.08), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.15));
+      z-index:1;
+      padding:20px;
+      text-align:center;
+    }
+    .placeholder .phTitle{
+      font-weight:900;
+      letter-spacing:.3px;
+      font-size:16px;
+    }
+    .placeholder .phSub{
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.6;
+      max-width: 28ch;
     }
 
     .screenOverlay{
@@ -343,7 +301,7 @@
 
     /* Footer */
     .footer{
-      margin-top:16px;
+      margin-top:14px;
       padding:14px 16px;
       border:1px solid var(--stroke);
       border-radius: 18px;
@@ -363,12 +321,23 @@
       background: rgba(255,255,255,.04);
     }
 
-    /* Responsive */
+    /* ✅ Mobile fixes */
     @media (max-width: 920px){
       .hero{grid-template-columns: 1fr; }
       .left,.right{min-height:auto}
-      .ctaRow{min-width:auto}
-      .brand{min-width:auto}
+      .ctaRow{width:100%; justify-content:stretch}
+      .ctaRow .btn{width:100%}
+      .nav{width:100%}
+      .pill{flex:1 1 auto; justify-content:center}
+    }
+    @media (max-width: 520px){
+      .wrap{padding:14px 0 22px}
+      .topbar{padding:12px}
+      .left{padding:18px 14px}
+      .phoneWrap{width:min(340px, 92vw)}
+      .btn{width:100%}
+      .ctaGrid{flex-direction:column; align-items:stretch}
+      .nav{gap:8px}
     }
   </style>
 </head>
@@ -382,20 +351,16 @@
         <div class="logoBox" aria-hidden="true"></div>
         <div class="brandText">
           <div class="name">EGBOOT</div>
-          <div class="tag">لوحة تحميل التطبيق + روابط التواصل</div>
         </div>
       </div>
 
       <nav class="nav">
-        <a class="pill" href="#download"><span class="dot"></span>تحميل التطبيق</a>
-        <a class="pill" href="#features"><span class="dot"></span>المميزات</a>
-        <a class="pill" href="#contact"><span class="dot"></span>تواصل</a>
+        <a class="pill" href="#download"><span class="dot"></span>تحميل</a>
+        <a class="pill" href="#preview"><span class="dot"></span>معاينة</a>
+        <a class="pill" href="#links"><span class="dot"></span>روابط</a>
       </nav>
 
       <div class="ctaRow">
-        <!-- WhatsApp: غيّر الرقم -->
-        <a class="btn btnWhats" href="https://wa.me/201000000000" target="_blank" rel="noopener">واتساب</a>
-
         <!-- Play Store: حط لينك التطبيق -->
         <a class="btn btnPrimary" id="download" href="https://play.google.com/store/apps/details?id=com.example.egboot2" target="_blank" rel="noopener">
           تحميل من Google Play
@@ -406,72 +371,33 @@
     <!-- HERO -->
     <main class="hero">
       <!-- LEFT PANEL -->
-      <section class="panel left">
-        <div class="kicker"><span class="spark"></span> صفحة واحدة — بسيطة وسريعة</div>
-
+      <section class="panel left" id="links">
         <h1>
-          حمّل تطبيق <span class="grad">EGBOOT</span><br/>
-          وابدأ شغلك بشكل أذكى
+          حمّل تطبيق <span class="grad">EGBOOT</span>
         </h1>
-
-        <p class="sub">
-          صفحة Landing احترافية تساعد العميل يوصل للتطبيق بسرعة، مع روابط تواصل واضحة.
-          التصميم بألوان حديثة (2026 vibe) ومتوافق للموبايل 100%.
-        </p>
 
         <div class="ctaGrid">
           <a class="btn btnPrimary" href="https://play.google.com/store/apps/details?id=com.example.egboot2" target="_blank" rel="noopener">
             تحميل التطبيق
           </a>
-          <a class="btn" href="https://facebook.com/" target="_blank" rel="noopener">فيسبوك</a>
-          <a class="btn btnWhats" href="https://wa.me/201000000000" target="_blank" rel="noopener">واتساب</a>
-        </div>
-
-        <div id="features" class="features">
-          <div class="feature">
-            <div class="ic">⚡</div>
-            <div>
-              <b>سريع وخفيف</b>
-              <span>تحميل فوري + تجربة نظيفة.</span>
-            </div>
-          </div>
-          <div class="feature">
-            <div class="ic">🔒</div>
-            <div>
-              <b>ثقة وأمان</b>
-              <span>مناسب للـ HTTPS لما DNS يكتمل.</span>
-            </div>
-          </div>
-          <div class="feature">
-            <div class="ic">📱</div>
-            <div>
-              <b>شكل موبايل حقيقي</b>
-              <span>سكرين شوت التطبيق داخل إطار تليفون.</span>
-            </div>
-          </div>
-          <div class="feature">
-            <div class="ic">💬</div>
-            <div>
-              <b>تواصل مباشر</b>
-              <span>زر واتساب + روابط بسرعة.</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="small" id="contact">
-          لو عايز نضيف زرار (اتصال / تيليجرام / ايميل) قولّي وبعمله فورًا.
+          <a class="btn" href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a>
         </div>
       </section>
 
       <!-- RIGHT PANEL: PHONE -->
-      <section class="panel right">
+      <section class="panel right" id="preview">
         <div class="phoneWrap" aria-label="App preview phone mockup">
           <div class="notch" aria-hidden="true"></div>
 
           <div class="phoneBezel">
-            <!-- ✅ هنا الصورة بتاعتك جوة شاشة الموبايل -->
-            <!-- لازم تحط الصورة جنب index.html باسم app-screenshot.jpg -->
-            <img class="screen" src="app-screenshot.jpg" alt="EGBOOT App Screenshot" />
+            <!-- Placeholder يظهر لو الصورة مش موجودة -->
+            <div class="placeholder" id="ph">
+              <div class="phTitle">ضع صورة التطبيق هنا</div>
+              <div class="phSub">سمّي الصورة: <b>app-screenshot.jpg</b> وحطّها جنب ملف index.html</div>
+            </div>
+
+            <!-- ✅ صورة التطبيق داخل الشاشة -->
+            <img class="screen" id="shot" src="app-screenshot.jpg" alt="EGBOOT App Screenshot" />
 
             <div class="screenOverlay" aria-hidden="true"></div>
           </div>
@@ -483,11 +409,10 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-      <small>© <span id="y"></span> EGBOOT • صفحة تحميل التطبيق</small>
+      <small>© <span id="y"></span> EGBOOT</small>
 
       <div class="footLinks">
         <a class="link" href="https://play.google.com/store/apps/details?id=com.example.egboot2" target="_blank" rel="noopener">Google Play</a>
-        <a class="link" href="https://wa.me/201000000000" target="_blank" rel="noopener">WhatsApp</a>
         <a class="link" href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a>
       </div>
     </footer>
@@ -495,6 +420,19 @@
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // لو الصورة مش لاقيها/فشلت في التحميل: نخلي الـ placeholder ظاهر
+    const img = document.getElementById("shot");
+    const ph = document.getElementById("ph");
+
+    img.addEventListener("load", () => {
+      ph.style.display = "none";
+    });
+
+    img.addEventListener("error", () => {
+      ph.style.display = "flex";
+      img.style.display = "none";
+    });
   </script>
 </body>
 </html>
