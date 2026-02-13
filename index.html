@@ -11,6 +11,7 @@
       --bg0:#070A12;
       --bg1:#0B1220;
       --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.08);
       --stroke:rgba(255,255,255,.10);
       --text:#EAF0FF;
       --muted:#B6C0DA;
@@ -43,11 +44,11 @@
     .wrap{
       width:min(1120px, 92vw);
       margin:0 auto;
-      padding:18px 0 30px;
+      padding:18px 0 34px;
     }
 
-    /* Top bar */
-    .topbar{
+    /* Header */
+    header{
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -58,17 +59,10 @@
       border-radius:18px;
       box-shadow: var(--shadow2);
       backdrop-filter: blur(10px);
-      flex-wrap:wrap;
     }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width: 200px;
-    }
+    .brand{display:flex;align-items:center;gap:12px}
     .logoBox{
-      width:42px;height:42px;
-      border-radius:14px;
+      width:42px;height:42px;border-radius:14px;
       background:
         radial-gradient(18px 18px at 30% 25%, rgba(0,229,255,.55), transparent 60%),
         radial-gradient(20px 20px at 70% 70%, rgba(255,79,216,.45), transparent 60%),
@@ -80,55 +74,13 @@
     .brandText .name{font-weight:900;letter-spacing:.6px;font-size:18px}
     .brandText .tag{color:var(--muted);font-size:12px;margin-top:4px}
 
-    .nav{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:center;
-      flex:1 1 auto;
-    }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.05);
-      transition:.18s ease;
-      user-select:none;
-      cursor:pointer;
-      white-space:nowrap;
-    }
-    .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.08)}
-    .dot{
-      width:10px;height:10px;border-radius:50%;
-      background:linear-gradient(180deg, var(--accent1), var(--accent2));
-      box-shadow: 0 0 18px rgba(0,229,255,.35);
-    }
-
-    .ctaRow{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      justify-content:flex-end;
-      flex-wrap:wrap;
-    }
-
     .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:12px 14px;
-      border-radius:14px;
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 14px;border-radius:14px;
       border:1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.06);
-      color:var(--text);
-      font-weight:800;
-      cursor:pointer;
-      transition:.18s ease;
+      color:var(--text);font-weight:900;
+      cursor:pointer;transition:.18s ease;
       box-shadow: 0 10px 24px rgba(0,0,0,.28);
       white-space:nowrap;
     }
@@ -140,10 +92,7 @@
         radial-gradient(120px 60px at 80% 70%, rgba(124,58,237,.30), transparent 65%),
         linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
     }
-    .btnGhost{
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-    }
+    .btnGhost{background: rgba(255,255,255,.05)}
     .btnOk{
       border:1px solid rgba(34,197,94,.30);
       background:
@@ -151,15 +100,7 @@
         linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
     }
 
-    /* Hero grid */
-    .hero{
-      display:grid;
-      grid-template-columns: 1.08fr .92fr;
-      gap:18px;
-      margin-top:16px;
-      align-items:stretch;
-    }
-
+    /* Panels */
     .panel{
       border:1px solid var(--stroke);
       border-radius: var(--r);
@@ -167,70 +108,61 @@
       box-shadow: var(--shadow);
       backdrop-filter: blur(12px);
       overflow:hidden;
-      position:relative;
-    }
-    .left{padding:22px 20px 18px}
-    .right{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:16px;
     }
 
+    /* Hero */
+    .hero{
+      margin-top:16px;
+      padding:24px 20px;
+      position:relative;
+    }
     .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius:999px;
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 12px;border-radius:999px;
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.05);
-      color:var(--muted);
-      font-weight:700;
-      width: fit-content;
+      color:var(--muted);font-weight:800;
+      width:fit-content;
     }
     .kicker .spark{
       width:14px;height:14px;border-radius:5px;
       background: linear-gradient(180deg, var(--accent4), var(--accent2));
       box-shadow: 0 0 18px rgba(255,79,216,.30);
     }
-
     h1{
       margin:14px 0 10px;
-      font-size: clamp(28px, 3.8vw, 44px);
-      line-height:1.06;
-      letter-spacing:.3px;
+      font-size: clamp(28px, 3.9vw, 46px);
+      line-height:1.08;
+      letter-spacing:.2px;
     }
     .grad{
       background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent4));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
+      -webkit-background-clip:text;background-clip:text;color:transparent;
     }
     .sub{
-      margin:10px 0 16px;
+      margin:10px 0 0;
       color: var(--muted);
       font-size: 15px;
-      line-height:1.8;
-      max-width: 62ch;
+      line-height:1.85;
+      max-width: 70ch;
     }
 
-    .chips{
+    .heroRow{
       display:flex;
+      gap:12px;
       flex-wrap:wrap;
-      gap:10px;
-      margin-top:10px;
+      margin-top:16px;
+      align-items:center;
+    }
+    .metaRow{
+      display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;
     }
     .chip{
-      padding:10px 12px;
-      border-radius:999px;
+      padding:10px 12px;border-radius:999px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.05);
-      font-size:12px;
-      color:var(--muted);
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
+      font-size:12px;color:var(--muted);
+      display:inline-flex;gap:8px;align-items:center;
     }
     .chip i{
       width:8px;height:8px;border-radius:999px;
@@ -238,26 +170,24 @@
       display:inline-block;
       box-shadow: 0 0 14px rgba(0,229,255,.25);
     }
-
-    .ctaGrid{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:14px;
-      align-items:center;
-    }
-    .note{
+    .trial{
       margin-top:12px;
-      color: var(--muted);
-      font-size: 12px;
+      font-size:12px;
+      color:var(--muted);
     }
-    .note b{color: var(--text)}
-    .free{
-      color: rgba(34,197,94,.95);
-      font-weight:900;
+    .trial b{color:rgba(34,197,94,.95)}
+
+    /* Preview grid */
+    .previewGrid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap:16px;
+      align-items:stretch;
     }
 
-    /* Phone mock */
+    /* Phone */
+    .phoneArea{padding:16px;display:flex;align-items:center;justify-content:center}
     .phoneWrap{
       width:min(360px, 86vw);
       aspect-ratio: 9/19.5;
@@ -269,96 +199,53 @@
       padding: 14px;
     }
     .phoneBezel{
-      position:absolute;
-      inset:14px;
-      border-radius: 34px;
+      position:absolute;inset:14px;border-radius:34px;
       background: rgba(0,0,0,.35);
-      border: 1px solid rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.10);
       overflow:hidden;
     }
     .notch{
-      position:absolute;
-      top:10px;
-      left:50%;
+      position:absolute;top:10px;left:50%;
       transform:translateX(-50%);
-      width: 140px;
-      height: 26px;
-      border-radius: 0 0 18px 18px;
+      width:140px;height:26px;border-radius:0 0 18px 18px;
       background: rgba(0,0,0,.55);
-      border: 1px solid rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.10);
       z-index:3;
     }
     .screen{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit: cover;
-      transform: scale(1.02);
+      position:absolute;inset:0;width:100%;height:100%;
+      object-fit: cover;transform: scale(1.02);
       filter: saturate(1.03) contrast(1.02);
     }
     .placeholder{
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex-direction:column;
-      gap:8px;
+      position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+      flex-direction:column;gap:8px;padding:20px;text-align:center;
       background:
         radial-gradient(300px 240px at 20% 10%, rgba(0,229,255,.10), transparent 60%),
         radial-gradient(260px 220px at 80% 30%, rgba(255,79,216,.08), transparent 60%),
         linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.15));
       z-index:1;
-      padding:20px;
-      text-align:center;
     }
     .placeholder .phTitle{font-weight:900;font-size:16px}
-    .placeholder .phSub{color:var(--muted);font-size:12px;line-height:1.6;max-width: 28ch}
+    .placeholder .phSub{color:var(--muted);font-size:12px;line-height:1.6;max-width:30ch}
     .screenOverlay{
-      position:absolute;
-      inset:0;
+      position:absolute;inset:0;pointer-events:none;z-index:2;
       background:
         radial-gradient(300px 240px at 20% 10%, rgba(0,229,255,.12), transparent 60%),
         radial-gradient(260px 220px at 80% 30%, rgba(255,79,216,.10), transparent 60%),
         linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.05));
-      pointer-events:none;
-      z-index:2;
     }
     .glare{
-      position:absolute;
-      inset:-40px -30px auto auto;
-      width: 220px;
-      height: 320px;
-      transform: rotate(18deg);
+      position:absolute;inset:-40px -30px auto auto;
+      width:220px;height:320px;transform: rotate(18deg);
       background: linear-gradient(180deg, rgba(255,255,255,.20), transparent 60%);
-      filter: blur(1px);
-      opacity:.22;
-      z-index:4;
-      pointer-events:none;
-      border-radius: 40px;
+      opacity:.22;z-index:4;pointer-events:none;border-radius:40px;
     }
 
-    /* Sections */
-    .section{
-      margin-top:16px;
-      padding:18px 18px;
-    }
-    .sectionTitle{
-      font-weight:900;
-      font-size:16px;
-      margin:0 0 12px;
-      letter-spacing:.2px;
-    }
-
-    .grid2{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:18px;
-      margin-top:16px;
-      align-items:stretch;
-    }
-
+    /* Video */
+    .videoArea{padding:16px}
+    .sectionTitle{margin:0 0 10px;font-weight:900;font-size:16px}
+    .sectionSub{margin:0 0 12px;color:var(--muted);font-size:13px;line-height:1.7}
     .videoBox{
       border:1px solid rgba(255,255,255,.10);
       border-radius:18px;
@@ -366,19 +253,15 @@
       background: rgba(255,255,255,.04);
       min-height: 320px;
     }
-    .videoBox iframe{
-      width:100%;
-      height:100%;
-      min-height:320px;
-      border:0;
-      display:block;
-    }
+    .videoBox iframe{width:100%;height:100%;min-height:320px;border:0;display:block}
 
+    /* Features */
+    .featuresPanel{margin-top:16px;padding:18px}
     .features{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
       gap:12px;
-      margin-top:10px;
+      margin-top:12px;
     }
     .feature{
       border:1px solid rgba(255,255,255,.10);
@@ -388,7 +271,7 @@
       display:flex;
       gap:10px;
       align-items:flex-start;
-      min-height: 76px;
+      min-height: 78px;
     }
     .ic{
       width:40px;height:40px;border-radius:14px;
@@ -398,58 +281,56 @@
         radial-gradient(18px 18px at 70% 75%, rgba(124,58,237,.22), transparent 60%),
         rgba(255,255,255,.04);
       display:flex;align-items:center;justify-content:center;
-      font-weight:900;
-      color: var(--text);
+      font-weight:900;color:var(--text);
       flex:0 0 auto;
     }
     .feature b{display:block;font-size:13px}
     .feature span{display:block;color:var(--muted);font-size:12px;margin-top:3px;line-height:1.4}
 
-    .priceCard{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      align-items:flex-start;
+    /* Pricing */
+    .pricingGrid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
+      align-items:stretch;
     }
-    .priceLine{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap:wrap;
-      margin-top:6px;
-    }
+    .pricingInfo{padding:18px}
+    .priceCard{padding:18px;display:flex;flex-direction:column;gap:10px;justify-content:center}
     .priceTag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 12px;
-      border-radius:999px;
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 12px;border-radius:999px;
       border:1px solid rgba(34,197,94,.30);
       background: rgba(34,197,94,.10);
       color: rgba(34,197,94,.95);
       font-weight:900;
+      width:fit-content;
     }
-
-    .faq{
-      display:grid;
-      gap:10px;
-      margin-top:10px;
+    .priceBig{
+      font-size:34px;font-weight:1000;letter-spacing:.2px;
+      margin:6px 0 0;
     }
-    details{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      border-radius: 16px;
-      padding:12px 12px;
+    .priceBig small{font-size:13px;color:var(--muted);font-weight:800}
+    .list{
+      margin:10px 0 0;padding:0;list-style:none;display:grid;gap:10px;
+      color:var(--muted);font-size:13px;line-height:1.7;
     }
-    summary{
-      cursor:pointer;
-      font-weight:900;
-      outline:none;
+    .list li{
+      display:flex;gap:10px;align-items:flex-start;
     }
-    details p{margin:10px 0 0;color:var(--muted);line-height:1.7;font-size:13px}
+    .check{
+      width:18px;height:18px;border-radius:6px;
+      background: rgba(34,197,94,.16);
+      border:1px solid rgba(34,197,94,.35);
+      display:inline-flex;align-items:center;justify-content:center;
+      color: rgba(34,197,94,.95);
+      flex:0 0 auto;
+      font-weight:1000;
+      margin-top:1px;
+    }
 
     /* Footer */
-    .footer{
+    footer{
       margin-top:16px;
       padding:14px 16px;
       border:1px solid var(--stroke);
@@ -461,32 +342,27 @@
       gap:10px;
       flex-wrap:wrap;
     }
-    .footer small{color:var(--muted)}
+    footer small{color:var(--muted)}
     .footLinks{display:flex;gap:10px;flex-wrap:wrap}
     .link{
-      padding:10px 12px;
-      border-radius: 999px;
+      padding:10px 12px;border-radius:999px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.04);
     }
 
     /* Responsive */
     @media (max-width: 980px){
-      .hero{grid-template-columns: 1fr; }
-      .grid2{grid-template-columns:1fr}
-      .features{offer:unset; grid-template-columns: repeat(2, minmax(0,1fr));}
-      .ctaRow{width:100%}
-      .ctaRow .btn{flex:1 1 auto}
-      .nav{width:100%}
-      .pill{flex:1 1 auto; justify-content:center}
+      header{flex-wrap:wrap}
+      .previewGrid, .pricingGrid{grid-template-columns:1fr}
+      .features{grid-template-columns: repeat(2, minmax(0,1fr));}
+      .btn{flex:1 1 auto}
     }
-    @media (max-width: 520px){
-      .wrap{padding:14px 0 22px}
-      .topbar{padding:12px}
-      .left{padding:18px 14px}
+    @media (max-width: 560px){
+      .wrap{padding:14px 0 26px}
+      header{padding:12px}
+      .hero{padding:18px 14px}
       .btn{width:100%}
-      .ctaGrid{flex-direction:column; align-items:stretch}
-      .features{grid-template-columns: 1fr}
+      .features{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -494,99 +370,72 @@
 <body>
   <div class="wrap">
 
-    <!-- TOP BAR -->
-    <header class="topbar">
+    <!-- Header: بدون زحمة -->
+    <header>
       <div class="brand">
         <div class="logoBox" aria-hidden="true"></div>
         <div class="brandText">
           <div class="name">EGBOOT</div>
-          <div class="tag">AI Assistant • تجميع أوردراتك من السوشيال</div>
+          <div class="tag">AI Assistant لتجميع الرسائل والأوردرات</div>
         </div>
       </div>
 
-      <nav class="nav">
-        <a class="pill" href="#download"><span class="dot"></span>تحميل</a>
-        <a class="pill" href="#video"><span class="dot"></span>فيديو</a>
-        <a class="pill" href="#features"><span class="dot"></span>المميزات</a>
-        <a class="pill" href="#price"><span class="dot"></span>السعر</a>
-      </nav>
-
-      <div class="ctaRow" id="download">
-        <!-- ✅ حط لينكاتك هنا -->
-        <a class="btn btnPrimary" href="https://play.google.com/store/apps/details?id=com.example.egboot2" target="_blank" rel="noopener">
-          Google Play
-        </a>
-        <a class="btn btnGhost" href="#" target="_blank" rel="noopener" aria-disabled="true" title="ضع رابط App Store هنا">
-          App Store (قريبًا)
-        </a>
-        <a class="btn btnOk" href="https://facebook.com/" target="_blank" rel="noopener">
-          Facebook
-        </a>
-      </div>
+      <!-- CTA واحد واضح -->
+      <a class="btn btnPrimary" href="https://play.google.com/store/apps/details?id=com.example.egboot2" target="_blank" rel="noopener">
+        تحميل التطبيق
+      </a>
     </header>
 
-    <!-- HERO -->
-    <main class="hero">
-      <!-- LEFT PANEL -->
-      <section class="panel left">
-        <div class="kicker"><span class="spark"></span> رد تلقائي + أوردرات في مكان واحد</div>
+    <!-- Hero: نبذة + CTA + شارات -->
+    <section class="panel hero" id="top">
+      <div class="kicker"><span class="spark"></span> رد ذكي + Orders في مكان واحد</div>
 
-        <h1>
-          خلّي <span class="grad">EGBOOT</span> يرد على العملاء<br/>
-          ويجمع كل الأوردرات تلقائيًا
-        </h1>
+      <h1>
+        خلّي <span class="grad">EGBOOT</span> يرد على عملائك
+        ويجمع أوردراتك تلقائيًا
+      </h1>
 
-        <p class="sub">
-          EGBOOT هو <b>AI Assistant</b> بيربط <b>Facebook + WhatsApp + Instagram</b>،
-          وبيخلي المساعد الذكي يتواصل مع العملاء ويجمع الرسائل والأوردرات كلها داخل التطبيق في قسم <b>Orders</b>.
-        </p>
+      <p class="sub">
+        EGBOOT هو <b>AI Assistant</b> بيربط <b>Facebook + WhatsApp + Instagram</b>،
+        وبيجمع كل المحادثات والأوردرات داخل التطبيق في قسم <b>Orders</b> — بدل التشتت بين المنصات.
+      </p>
 
-        <div class="chips">
-          <span class="chip"><i></i> Inbox موحّد لكل الرسائل</span>
-          <span class="chip"><i></i> Orders مجمّعة داخل التطبيق</span>
-          <span class="chip"><i></i> ربط سريع خلال دقائق</span>
-        </div>
+      <div class="heroRow">
+        <a class="btn btnPrimary" href="https://play.google.com/store/apps/details?id=com.example.egboot2" target="_blank" rel="noopener">Google Play</a>
+        <a class="btn btnGhost" href="#" target="_blank" rel="noopener" aria-disabled="true" title="ضع رابط App Store هنا">App Store (قريبًا)</a>
+        <a class="btn btnOk" href="https://facebook.com/" target="_blank" rel="noopener">صفحة Facebook</a>
+      </div>
 
-        <div class="ctaGrid">
-          <a class="btn btnPrimary" href="https://play.google.com/store/apps/details?id=com.example.egboot2" target="_blank" rel="noopener">
-            تحميل من Google Play
-          </a>
-          <a class="btn btnGhost" href="#" target="_blank" rel="noopener" aria-disabled="true">
-            تحميل من App Store
-          </a>
-        </div>
+      <div class="trial">🎁 تجربة مجانية <b>10 أيام</b> • بعد كده <b>500 جنيه / شهر</b></div>
 
-        <div class="note">
-          <span class="free">🎁 تجربة مجانية 10 أيام</span> • بعد كده <b>500 جنيه / شهر</b>
-        </div>
-      </section>
+      <div class="metaRow">
+        <span class="chip"><i></i> Inbox موحّد</span>
+        <span class="chip"><i></i> Orders مجمّعة</span>
+        <span class="chip"><i></i> ربط سريع</span>
+      </div>
+    </section>
 
-      <!-- RIGHT PANEL: PHONE -->
-      <section class="panel right">
-        <div class="phoneWrap" aria-label="App preview phone mockup">
+    <!-- Preview: صورة + فيديو (بدون تكرار أقسام) -->
+    <section class="previewGrid">
+      <div class="panel phoneArea">
+        <div class="phoneWrap">
           <div class="notch" aria-hidden="true"></div>
-
           <div class="phoneBezel">
             <div class="placeholder" id="ph">
               <div class="phTitle">ضع صورة التطبيق هنا</div>
               <div class="phSub">سمّي الصورة: <b>app-screenshot.jpg</b> وحطّها جنب index.html</div>
             </div>
-
             <img class="screen" id="shot" src="app-screenshot.jpg" alt="EGBOOT App Screenshot" />
             <div class="screenOverlay" aria-hidden="true"></div>
           </div>
-
           <div class="glare" aria-hidden="true"></div>
         </div>
-      </section>
-    </main>
+      </div>
 
-    <!-- VIDEO + PRICING -->
-    <section class="grid2">
-      <div class="panel section" id="video">
-        <h2 class="sectionTitle">فيديو سريع للتطبيق وهو شغّال</h2>
+      <div class="panel videoArea" id="video">
+        <h2 class="sectionTitle">فيديو قصير يوضح EGBOOT وهو شغّال</h2>
+        <p class="sectionSub">بدّل YOUR_VIDEO_ID بـ ID الفيديو من يوتيوب.</p>
         <div class="videoBox">
-          <!-- ✅ بدّل YOUR_VIDEO_ID -->
           <iframe
             src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
             title="EGBOOT Demo"
@@ -594,122 +443,85 @@
             allowfullscreen>
           </iframe>
         </div>
-        <div class="note">لو عندك فيديو mp4 بدل يوتيوب، قولّي وأخليه تشغيل مباشر داخل الموقع.</div>
-      </div>
-
-      <div class="panel section" id="price">
-        <h2 class="sectionTitle">السعر بسيط وواضح</h2>
-
-        <div class="priceCard">
-          <div class="sub" style="margin:0;max-width:none">
-            اشتراك شهري واحد يخليك تلم كل شغلك من السوشيال في مكان واحد، وتخلي الـ AI يرد ويتابع.
-          </div>
-
-          <div class="priceLine">
-            <span class="priceTag">500 جنيه / شهر</span>
-            <span class="chip"><i></i> تجربة 10 أيام مجانًا</span>
-          </div>
-
-          <div class="ctaGrid" style="margin-top:10px">
-            <a class="btn btnPrimary" href="https://play.google.com/store/apps/details?id=com.example.egboot2" target="_blank" rel="noopener">
-              ابدأ الآن — Google Play
-            </a>
-            <a class="btn btnGhost" href="#" target="_blank" rel="noopener">
-              App Store
-            </a>
-          </div>
-
-          <div class="note">* تقدر تلغي في أي وقت — بدون تعقيد.</div>
-        </div>
       </div>
     </section>
 
-    <!-- FEATURES -->
-    <section class="panel section" id="features">
+    <!-- Features: حقيقية ومباشرة -->
+    <section class="panel featuresPanel" id="features">
       <h2 class="sectionTitle">المميزات الأساسية</h2>
 
       <div class="features">
         <div class="feature">
           <div class="ic">🤖</div>
-          <div>
-            <b>AI رد تلقائي</b>
-            <span>يستقبل ويساعد ويرد على العملاء بسرعة.</span>
-          </div>
+          <div><b>رد تلقائي ذكي</b><span>يرد ويتابع مع العملاء بسرعة وبشكل منظم.</span></div>
         </div>
 
         <div class="feature">
           <div class="ic">🔗</div>
-          <div>
-            <b>ربط السوشيال</b>
-            <span>Facebook + WhatsApp + Instagram في تطبيق واحد.</span>
-          </div>
+          <div><b>ربط المنصات</b><span>Facebook + WhatsApp + Instagram في مكان واحد.</span></div>
         </div>
 
         <div class="feature">
           <div class="ic">📥</div>
-          <div>
-            <b>Inbox موحّد</b>
-            <span>كل الرسائل في مكان واحد بدون تشتت.</span>
-          </div>
+          <div><b>Inbox موحّد</b><span>كل الرسائل مجمعة بدل التنقل بين التطبيقات.</span></div>
         </div>
 
         <div class="feature">
           <div class="ic">🧾</div>
-          <div>
-            <b>Orders مجمعة</b>
-            <span>كل الأوردرات تتسجل تلقائيًا داخل قسم Orders.</span>
-          </div>
+          <div><b>Orders تلقائي</b><span>يجمع الأوردرات داخل قسم Orders داخل EGBOOT.</span></div>
         </div>
 
         <div class="feature">
           <div class="ic">⚡</div>
-          <div>
-            <b>تشغيل سريع</b>
-            <span>تفعيل خلال دقائق وتجربة مجانية 10 أيام.</span>
-          </div>
+          <div><b>تشغيل سريع</b><span>تبدأ في دقائق: تحميل → ربط → تشغيل.</span></div>
         </div>
 
         <div class="feature">
           <div class="ic">💸</div>
-          <div>
-            <b>سعر اقتصادي</b>
-            <span>500 جنيه/شهر بدل توظيف فريق كامل للرد والمتابعة.</span>
-          </div>
+          <div><b>سعر اقتصادي</b><span>500 جنيه/شهر + تجربة مجانية 10 أيام.</span></div>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="panel section">
-      <h2 class="sectionTitle">أسئلة سريعة</h2>
-      <div class="faq">
-        <details>
-          <summary>هل أحتاج فريق عشان يرد؟</summary>
-          <p>لا. EGBOOT بيقوم بدور مساعد ذكي للرد والمتابعة وتجميع البيانات.</p>
-        </details>
+    <!-- Pricing: كارت واحد واضح بدون زحمة -->
+    <section class="pricingGrid" id="price">
+      <div class="panel pricingInfo">
+        <h2 class="sectionTitle">ليه EGBOOT مناسب لبيزنسك؟</h2>
+        <p class="sectionSub">
+          بدل ما الرسائل والأوردرات تتوه بين السوشيال، EGBOOT بيجمعهم لك في مكان واحد ويخلّي المساعد الذكي يتولى الرد والمتابعة.
+        </p>
 
-        <details>
-          <summary>هل يدعم فيسبوك وواتساب وإنستجرام؟</summary>
-          <p>نعم، الهدف إنه يربط المنصات دي ويجمع الرسائل والأوردرات داخل التطبيق.</p>
-        </details>
+        <ul class="list">
+          <li><span class="check">✓</span> كل المحادثات في Inbox واحد</li>
+          <li><span class="check">✓</span> كل الأوردرات في Orders داخل التطبيق</li>
+          <li><span class="check">✓</span> تجربة مجانية 10 أيام قبل الاشتراك</li>
+        </ul>
+      </div>
 
-        <details>
-          <summary>إزاي أبدأ التجربة المجانية؟</summary>
-          <p>حمّل التطبيق، اربط الحسابات، وابدأ استخدام EGBOOT لمدة 10 أيام مجانًا.</p>
-        </details>
+      <div class="panel priceCard">
+        <div class="priceTag">أفضل خطة — بسيطة</div>
+        <div class="priceBig">500 <small>جنيه / شهر</small></div>
+        <div class="sectionSub" style="margin:0">+ 🎁 تجربة مجانية 10 أيام</div>
+
+        <div class="heroRow" style="margin-top:10px">
+          <a class="btn btnPrimary" href="https://play.google.com/store/apps/details?id=com.example.egboot2" target="_blank" rel="noopener">تحميل Google Play</a>
+          <a class="btn btnGhost" href="#" target="_blank" rel="noopener">تحميل App Store</a>
+        </div>
+
+        <div class="sectionSub" style="margin:0">* تقدر تلغي في أي وقت.</div>
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
+    <!-- Footer -->
+    <footer>
       <small>© <span id="y"></span> EGBOOT • AI Assistant</small>
-
       <div class="footLinks">
         <a class="link" href="https://play.google.com/store/apps/details?id=com.example.egboot2" target="_blank" rel="noopener">Google Play</a>
         <a class="link" href="#" target="_blank" rel="noopener">App Store</a>
         <a class="link" href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a>
       </div>
     </footer>
+
   </div>
 
   <script>
